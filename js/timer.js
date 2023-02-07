@@ -5,13 +5,13 @@ import { addZero } from "./util.js";
 const minutesElem = document.querySelector('.time__minutes');
 const secondsElem = document.querySelector('.time__seconds');
 
-const showTime = (seconds) => {
+export const showTime = (seconds) => {
     minutesElem.textContent = addZero(Math.floor(seconds / 60));
     secondsElem.textContent = addZero(seconds % 60);
 }
 
 export const startTimer = () => {
-    state.timeLeft -= 5;
+    state.timeLeft -= 1;
 
     showTime(state.timeLeft);
 
