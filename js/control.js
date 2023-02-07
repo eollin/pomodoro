@@ -26,4 +26,5 @@ export const initControl = () => {
     });
 
     btnStop.addEventListener('click', stop);
+    showTime(state.timeLeft);
 }

@@ -21,5 +21,23 @@ export const startTimer = () => {
 
     if (state.timeLeft <= 0) {
         alarm();
+        console.log(state.activeTodo);
+
+        if (state.status === 'work') {
+            state.activeTodo.pomodoro += 1;
+
+            if (state.activeTodo.pomodoro % state.count !== 0) {
+                state.status = 'break';
+            } else {
+                state.status = 'relax';
+            }
+
+        } else {
+            state.status = 'work';
+        }
+
+        state.timeLeft = state[state.status] * 60;
+        console.log(state.activeTodo);
+        startTimer();
     }
 }
