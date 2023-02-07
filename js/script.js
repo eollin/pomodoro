@@ -6,7 +6,7 @@ const initPomodoro = () => {
 
   state.activeTodo = {
     id: 'default',
-    pomodoro: 2,
+    pomodoro: 0,
     title: 'Помодоро',
   }
 }
