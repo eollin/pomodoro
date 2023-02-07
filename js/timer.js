@@ -1,4 +1,5 @@
 import { alarm } from "./alarm.js";
+import { changeActiveBtn } from "./control.js";
 import { state } from "./state.js"
 import { addZero } from "./util.js";
 
@@ -11,7 +12,7 @@ export const showTime = (seconds) => {
 }
 
 export const startTimer = () => {
-    state.timeLeft -= 1;
+    state.timeLeft -= 20;
 
     showTime(state.timeLeft);
 
@@ -37,7 +38,7 @@ export const startTimer = () => {
         }
 
         state.timeLeft = state[state.status] * 60;
-        console.log(state.activeTodo);
+        changeActiveBtn(state.status);
         startTimer();
     }
 }
