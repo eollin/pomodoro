@@ -1,4 +1,4 @@
-const WORK_TIME = 50;
+const WORK_TIME = 1;
 
 export const state = {
     timeLeft: WORK_TIME * 60,

@@ -1,4 +1,4 @@
-const audio = new Audio('../audio/polnomochiya.mp3');
+const audio = new Audio('../audio/san-andreas.mp3');
 
 export const alarm = () => {
     audio.play();
