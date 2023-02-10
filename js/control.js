@@ -7,8 +7,6 @@ const navigationBtns = document.querySelectorAll('.navigation__btn');
 
 export const changeActiveBtn = (dataUse) => {
   state.status = dataUse;
-  state.timeLeft = state[state.status] * 60;
-  showTime(state.timeLeft);
 
   for (let i = 0; i < navigationBtns.length; i++) {
     if (navigationBtns[i].dataset.use === dataUse) {
