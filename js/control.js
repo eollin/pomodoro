@@ -45,6 +45,7 @@ export const initControl = () => {
   for (let i = 0; i < navigationBtns.length; i++) {
     navigationBtns[i].addEventListener('click', () => {
       changeActiveBtn(navigationBtns[i].dataset.use);
+      stop();
     })
   }
 
