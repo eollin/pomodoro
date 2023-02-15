@@ -53,12 +53,12 @@ const createTodoListItem = (todo) => {
     todoBtn.textContent = todo.title;
 
     const editBtn = document.createElement('button');
-    todoBtn.classList.add('todo__edit');
-    todoBtn.ariaLabel = 'Редактировать задачу';
+    editBtn.classList.add('todo__edit');
+    editBtn.ariaLabel = 'Редактировать задачу';
 
     const delBtn = document.createElement('button');
-    todoBtn.classList.add('todo__del');
-    todoBtn.ariaLabel = 'Удалить задачу';
+    delBtn.classList.add('todo__del');
+    delBtn.ariaLabel = 'Удалить задачу';
 
     todoItemWrapper.append(todoBtn, editBtn, delBtn);
     todoListElem.prepend(todoItem);
@@ -86,5 +86,6 @@ export const initTodo = () => {
   todoAddBtn.addEventListener('click', () => {
     const title = prompt('Введите имя задачи');
     const todo = addTodo(title);
+    createTodoListItem(todo);
   })
 }
