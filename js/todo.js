@@ -3,6 +3,14 @@ import { state } from "./state.js";
 const titleElem = document.querySelector('.title');
 const todoListElem = document.querySelector('.todo__list');
 
+const todoLine = document.createElement('li');
+todoLine.classList.add('todo__item');
+
+const todoAddBtn = document.createElement('button');
+todoAddBtn.classList.add('todo__add');
+todoAddBtn.textContent = 'Добавить новую задачу';
+todoLine.append(todoAddBtn);
+
 const getTodo = () => {
   const todoList = JSON.parse(localStorage.getItem('pomodoro') || '[]');
 
@@ -44,7 +52,9 @@ const renderTodoList = (list) => {
       todoItemWrapper.append(todoBtn, editBtn, delBtn);
       todoListElem.prepend(todoItem);
     }
-  });
+  })
+
+  todoListElem.append(todoLine);
 };
 
 const showTodo = () => {
