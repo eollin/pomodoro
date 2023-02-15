@@ -14,14 +14,6 @@ todoLine.append(todoAddBtn);
 const getTodo = () => {
   const todoList = JSON.parse(localStorage.getItem('pomodoro') || '[]');
 
-  if (!todoList.length) {
-    todoList.push({
-      id: 'default',
-      pomodoro: 0,
-      title: 'Помодоро',
-    });
-  }
-
   return todoList;
 }
 
@@ -78,7 +70,17 @@ const showTodo = () => {
 
 export const initTodo = () => {
   const todoList = getTodo();
-  state.activeTodo = todoList[0];
+
+  if (!todoList.length) {
+    state.activeTodo = [{
+      id: 'default',
+      pomodoro: 0,
+      title: 'Помодоро',
+    }]
+  } else {
+    state.activeTodo = todoList[todoList.length - 1];
+  }
+
   showTodo();
 
   renderTodoList(todoList);
