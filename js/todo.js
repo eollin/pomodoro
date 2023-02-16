@@ -106,19 +106,24 @@ const renderTodoList = (list) => {
 };
 
 const showTodo = () => {
-  titleElem.textContent = state.activeTodo.title;
-  countElem.textContent = state.activeTodo.pomodoro;
+  if (state.activeTodo) {
+    titleElem.textContent = state.activeTodo.title;
+    countElem.textContent = state.activeTodo.pomodoro;
+  } else {
+    titleElem.textContent = '';
+    countElem.textContent = 0;
+  }
 };
 
 export const initTodo = () => {
   const todoList = getTodo();
 
   if (!todoList.length) {
-    state.activeTodo = [{
+    state.activeTodo = {
       id: 'default',
       pomodoro: 0,
       title: 'Помодоро',
-    }]
+    };
   } else {
     state.activeTodo = todoList[todoList.length - 1];
   }
