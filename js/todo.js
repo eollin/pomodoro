@@ -35,12 +35,19 @@ const addTodo = (title) => {
 
 const updateTodo = (todo) => {
   const todoList = getTodo();
-
   const todoItem = todoList.find((item) => item.id === todo.id);
   todoItem.title = todo.title;
   todoItem.pomodoro = todo.pomodoro;
-
   localStorage.setItem('pomodoro', JSON.stringify(todoList));
+}
+
+const deleteTodo = (todo) => {
+  const todoList = getTodo();
+  const newTodoList = todoList.filter((item) => item.id !== todo.id);
+  if (todo.id === state.activeTodo.id) {
+    state.activeTodo = newTodoList[newTodoList.length - 1];
+  }
+  localStorage.setItem('pomodoro', JSON.stringify(newTodoList));
 }
 
 const createTodoListItem = (todo) => {
@@ -79,13 +86,15 @@ const createTodoListItem = (todo) => {
       todoBtn.textContent = todo.title;
       if (todo.id === state.activeTodo.id) {
         state.activeTodo.title = todo.title
-      }
+      };
       updateTodo(todo);
       showTodo();
     });
 
     delBtn.addEventListener('click', () => {
-
+      deleteTodo(todo);
+      showTodo();
+      todoItem.remove();
     });
   }
 }
