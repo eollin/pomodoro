@@ -23,14 +23,17 @@ export const startTimer = () => {
 
     document.title = state.timeLeft;
 
-    const now = new Date().getTime();
-    state.timeLeft = Math.floor((countdown - now) / 1000);
+    if (!(state.timeLeft % 5)) {
+      const now = new Date().getTime();
+      state.timeLeft = Math.floor((countdown - now) / 1000);
+    }
 
     if (state.timeLeft > 0 && state.isActive) {
       return;
     }
 
     document.title = title;
+    clearTimeout(state.timerId);
 
     if (state.status === 'work') {
       state.activeTodo.pomodoro += 1;
