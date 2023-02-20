@@ -1,6 +1,7 @@
 import { alarm } from "./alarm.js";
 import { changeActiveBtn } from "./control.js";
 import { state } from "./state.js"
+import { showTodo, updateTodo } from "./todo.js";
 import { addZero } from "./util.js";
 
 const minutesElem = document.querySelector('.time__minutes');
@@ -26,6 +27,8 @@ export const startTimer = () => {
 
     if (state.status === 'work') {
       state.activeTodo.pomodoro += 1;
+      updateTodo(state.activeTodo);
+      showTodo();
 
       if (state.activeTodo.pomodoro % state.count !== 0) {
         state.status = 'break';

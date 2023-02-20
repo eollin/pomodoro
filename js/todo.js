@@ -33,7 +33,7 @@ const addTodo = (title) => {
   return todo;
 }
 
-const updateTodo = (todo) => {
+export const updateTodo = (todo) => {
   const todoList = getTodo();
   const todoItem = todoList.find((item) => item.id === todo.id);
   todoItem.title = todo.title;
@@ -87,8 +87,8 @@ const createTodoListItem = (todo) => {
       if (todo.id === state.activeTodo.id) {
         state.activeTodo.title = todo.title
       };
-      updateTodo(todo);
       showTodo();
+      updateTodo(todo);
     });
 
     delBtn.addEventListener('click', () => {
@@ -105,7 +105,7 @@ const renderTodoList = (list) => {
   todoListElem.append(todoLine);
 };
 
-const showTodo = () => {
+export const showTodo = () => {
   if (state.activeTodo) {
     titleElem.textContent = state.activeTodo.title;
     countElem.textContent = state.activeTodo.pomodoro;
