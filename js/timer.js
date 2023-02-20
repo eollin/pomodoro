@@ -12,14 +12,25 @@ export const showTime = (seconds) => {
   secondsElem.textContent = addZero(seconds % 60);
 }
 
+const title = document.title;
+
 export const startTimer = () => {
+  const countdown = new Date().getTime() + state.timeLeft * 1000;
+
   state.timerId = setInterval(() => {
     state.timeLeft -= 1;
     showTime(state.timeLeft);
 
+    document.title = state.timeLeft;
+
+    const now = new Date().getTime();
+    state.timeLeft = Math.floor((countdown - now) / 1000);
+
     if (state.timeLeft > 0 && state.isActive) {
       return;
     }
+
+    document.title = title;
 
     if (state.status === 'work') {
       state.activeTodo.pomodoro += 1;
