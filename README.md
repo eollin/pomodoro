@@ -1,2 +1,2 @@
 # pomodoro
-A JavaScript-based Pomodoro timer
+A pet-project, that includes a JavaScript-based Pomodoro timer
